@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
 import avt4 from "../../assets/images/avt4.png";
-const Started4 = () => {
+const Started4 = ({navigation}) => {
     return (
         <>
             <View style={styles.container}>
@@ -63,7 +63,7 @@ const Started4 = () => {
                 </View>
 
                 <View style={{ marginTop: 40, alignItems: 'center' }}>
-                    <TouchableOpacity style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Started5')}} style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
                         <Text style={{ textAlign: 'center', color: '#fff' }}>CONTINUE</Text>
                     </TouchableOpacity>
                 </View>

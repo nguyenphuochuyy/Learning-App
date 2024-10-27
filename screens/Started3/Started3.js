@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
 import avt3 from "../../assets/images/avt3.png";
-const Started1 = () => {
+const Started3 = ({navigation}) => {
     return (
         <>
             <View style={styles.container}>
@@ -63,7 +63,7 @@ const Started1 = () => {
                 </View>
 
                 <View style={{ marginTop: 40, alignItems: 'center' }}>
-                    <TouchableOpacity style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Started4')}} style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
                         <Text style={{ textAlign: 'center', color: '#fff' }}>CONTINUE</Text>
                     </TouchableOpacity>
                 </View>
@@ -88,4 +88,4 @@ const styles = StyleSheet.create({
 
     }
 })
-export default Started1
+export default Started3

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
 import avt2 from "../../assets/images/avt2.png";
-const Started1 = ({navigation}) => {
+const Started2 = ({navigation}) => {
     return (
         <>
             <View style={styles.container}>
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
 
     }
 })
-export default Started1
+export default Started2

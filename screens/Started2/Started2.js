@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
-import avt1 from "../../assets/images/avt1.png";
-const Started1 = ({navigation}) => {
+import avt2 from "../../assets/images/avt2.png";
+const Started1 = () => {
     return (
         <>
             <View style={styles.container}>
@@ -11,13 +11,13 @@ const Started1 = ({navigation}) => {
                 </View>
 
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 25 }}>
-                    <Image source={avt1} />
+                    <Image source={avt2} />
                 </View>
 
                 <View style={{ marginTop: 25, alignItems: 'center' }}>
                     <View >
-                        <Text style={{ fontSize: 25, fontWeight: '500' }}>Unlock Your Potential </Text>
-                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>with Edu Hub</Text>
+                        <Text style={{ fontSize: 25, fontWeight: '500' , textAlign : 'center' }}>Empower Your </Text>
+                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>Education Journey</Text>
                     </View>
                     <View style={{ marginTop: 10 }}>
                         <Text style={{ textAlign: 'center' }}>
@@ -31,7 +31,7 @@ const Started1 = ({navigation}) => {
                             height: 10,
                             borderRadius: 5,
                             marginHorizontal: 5,
-                            backgroundColor: '#0F3975',
+                            backgroundColor: '#ccc',
                     }}></View>
                       <View style={{
                         
@@ -39,7 +39,8 @@ const Started1 = ({navigation}) => {
                             height: 10,
                             borderRadius: 5,
                             marginHorizontal: 5,
-                            backgroundColor: '#ccc',
+                          
+                            backgroundColor: '#0F3975',
                         
                     }}></View>
                       <View style={{
@@ -64,7 +65,7 @@ const Started1 = ({navigation}) => {
                 </View>
 
                 <View style={{ marginTop: 40, alignItems: 'center' }}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('Started2')}} style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                    <TouchableOpacity style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
                         <Text style={{ textAlign: 'center', color: '#fff' }}>CONTINUE</Text>
                     </TouchableOpacity>
                 </View>

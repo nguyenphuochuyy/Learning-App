@@ -7,13 +7,13 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function Detail1({ navigation }) {
+export default function Detail2({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Progress Bar */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
-          <View style={[styles.step, styles.activeStep]}>
+          <View style={[styles.step]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
           <Text style={styles.stepText}>Overview</Text>
@@ -29,7 +29,7 @@ export default function Detail1({ navigation }) {
         />
 
         <View style={styles.stepContainer}>
-          <View style={styles.step}>
+          <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
           <Text style={styles.stepText}>Payment Method</Text>
@@ -52,55 +52,24 @@ export default function Detail1({ navigation }) {
         </View>
       </View>
 
-      {/* Course Details */}
-      <Text style={styles.sectionTitle}>Overview</Text>
-      <Text style={styles.courseDetail}>
-        Name Of Lesson: <Text style={styles.boldText}>Mobile App UI UX</Text>
-      </Text>
+      {/* Select Payment Method */}
+      <Text style={styles.sectionTitle}>Select Payment Method</Text>
 
-      <View style={styles.infoBox}>
-        <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📚 100 + Lessons</Text>
-          <Text style={styles.infoText}>⏱ 7 Weeks</Text>
-        </View>
-        <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📄 Certificate</Text>
-          <Text style={styles.infoText}>💸 20% off</Text>
-        </View>
-      </View>
-
-      <Text style={styles.courseDetail}>Course Rating: ⭐⭐⭐⭐⭐</Text>
-      <Text style={styles.courseDetail}>
-        Course Time: <Text style={styles.boldText}>7 Hrs</Text>
-      </Text>
-      <Text style={styles.courseDetail}>
-        Name Of Trainer: <Text style={styles.boldText}>Ayesha</Text>
-      </Text>
-
-      {/* Purchase Details */}
-      <Text style={styles.sectionTitle}>Purchase Detail:</Text>
-      <View style={styles.purchaseBox}>
-        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-          <Text style={{ padding: 1 }}>Date: 13-4-24</Text>
-          <Text style={{ padding: 1 }}>Price Of Course: $95</Text>
-        </View>
-        <View style={{ flexDirection: "row", marginLeft: 40, paddingTop: 10 }}>
-          <Text style={{ padding: 1 }}>Coupon: Added 20% Discount</Text>
-        </View>
-      </View>
-
-      {/* Final Price */}
-      <View style={{ alignItems: "flex-end" }}>
-        <Text style={styles.finalPrice}>
-          Final Price: <Text style={styles.price}> 66 $</Text>
-        </Text>
-      </View>
+      <TouchableOpacity style={styles.paymentOption}>
+        <Text style={styles.optionText}>+ Paypal</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.paymentOption, styles.selectedOption]}>
+        <Text style={styles.optionText}>+ Add Credit Card</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.paymentOption}>
+        <Text style={styles.optionText}>+ Google Pay</Text>
+      </TouchableOpacity>
 
       {/* Start Button */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Detail2");
+          navigation.navigate("Detail3");
         }}
       >
         <Text style={styles.buttonText}>STARTED</Text>
@@ -156,42 +125,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 20,
   },
-  courseDetail: {
-    fontSize: 16,
-    marginTop: 10,
-  },
-  boldText: {
-    fontWeight: "bold",
-  },
-  infoBox: {
+  paymentOption: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#e0e0e0",
-    padding: 10,
-    borderRadius: 8,
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    backgroundColor: "#F4F9FF",
-  },
-  infoText: {
+    alignItems: "center",
+    padding: 15,
     marginVertical: 10,
-    fontSize: 14,
-  },
-  purchaseBox: {
-    padding: 10,
-    borderRadius: 8,
+    backgroundColor: "#f9f9f9",
     borderWidth: 1,
-    marginTop: 10,
     borderColor: "#ccc",
+    borderRadius: 8,
   },
-  finalPrice: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 20,
+  selectedOption: {
+    backgroundColor: "#E6F0FF",
   },
-  price: {
-    color: "#007AFF",
+  optionText: {
+    fontSize: 16,
+    color: "#333",
   },
   button: {
     backgroundColor: "#007AFF",

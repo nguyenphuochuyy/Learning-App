@@ -5,15 +5,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  TextInput,
 } from "react-native";
 
-export default function Detail1({ navigation }) {
+export default function Detail3({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Progress Bar */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
-          <View style={[styles.step, styles.activeStep]}>
+          <View style={[styles.step]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
           <Text style={styles.stepText}>Overview</Text>
@@ -29,7 +30,7 @@ export default function Detail1({ navigation }) {
         />
 
         <View style={styles.stepContainer}>
-          <View style={styles.step}>
+          <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
           <Text style={styles.stepText}>Payment Method</Text>
@@ -52,30 +53,21 @@ export default function Detail1({ navigation }) {
         </View>
       </View>
 
-      {/* Course Details */}
-      <Text style={styles.sectionTitle}>Overview</Text>
-      <Text style={styles.courseDetail}>
-        Name Of Lesson: <Text style={styles.boldText}>Mobile App UI UX</Text>
-      </Text>
+      {/* Add Details Section */}
+      <Text style={styles.sectionTitle}>Add Details</Text>
 
-      <View style={styles.infoBox}>
-        <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📚 100 + Lessons</Text>
-          <Text style={styles.infoText}>⏱ 7 Weeks</Text>
-        </View>
-        <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📄 Certificate</Text>
-          <Text style={styles.infoText}>💸 20% off</Text>
-        </View>
+      <TextInput style={styles.input} placeholder="Card Number" />
+      <View style={styles.row}>
+        <TextInput
+          style={[styles.input, styles.halfInput]}
+          placeholder="CVV Number"
+        />
+        <TextInput
+          style={[styles.input, styles.halfInput]}
+          placeholder="Expire Date"
+        />
       </View>
-
-      <Text style={styles.courseDetail}>Course Rating: ⭐⭐⭐⭐⭐</Text>
-      <Text style={styles.courseDetail}>
-        Course Time: <Text style={styles.boldText}>7 Hrs</Text>
-      </Text>
-      <Text style={styles.courseDetail}>
-        Name Of Trainer: <Text style={styles.boldText}>Ayesha</Text>
-      </Text>
+      <TextInput style={styles.input} placeholder="Password" />
 
       {/* Purchase Details */}
       <Text style={styles.sectionTitle}>Purchase Detail:</Text>
@@ -100,7 +92,7 @@ export default function Detail1({ navigation }) {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Detail2");
+          navigation.navigate("Detail4");
         }}
       >
         <Text style={styles.buttonText}>STARTED</Text>
@@ -156,27 +148,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 20,
   },
-  courseDetail: {
-    fontSize: 16,
-    marginTop: 10,
-  },
-  boldText: {
-    fontWeight: "bold",
-  },
-  infoBox: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#e0e0e0",
-    padding: 10,
-    borderRadius: 8,
-    marginTop: 10,
+
+  input: {
     borderWidth: 1,
     borderColor: "#ccc",
-    backgroundColor: "#F4F9FF",
-  },
-  infoText: {
+    borderRadius: 8,
+    padding: 12,
     marginVertical: 10,
-    fontSize: 14,
+    backgroundColor: "#F4F9FF",
+    fontSize: 16,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  halfInput: {
+    width: "48%",
   },
   purchaseBox: {
     padding: 10,

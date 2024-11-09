@@ -27,11 +27,11 @@ const Started5 = ({navigation}) => {
                 </View>
              
                 <View style={{ marginTop: 40, alignItems: 'center' , flexDirection : 'row' , justifyContent : 'space-around' }}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('')}} style={{ width: 150, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('SignIn')}} style={{ width: 150, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
                         <Text style={{ textAlign: 'center', color: '#fff' }}>SIGN IN</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=>{navigation.navigate('')}} style={{ width: 150, height: 54, backgroundColor: '#FFF', borderColor : '#0F3975', borderWidth : 1, justifyContent: 'center', borderRadius: 10 }}>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}} style={{ width: 150, height: 54, backgroundColor: '#FFF', borderColor : '#0F3975', borderWidth : 1, justifyContent: 'center', borderRadius: 10 }}>
                         <Text style={{ textAlign: 'center', color: '#000' }}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
@@ -41,6 +41,7 @@ const Started5 = ({navigation}) => {
     )
 }
 const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         backgroundColor: '#fff',

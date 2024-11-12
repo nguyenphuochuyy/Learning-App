@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,61 +8,28 @@ import {
   Image,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import job1 from "../../assets/images/job1.png";
-import job2 from "../../assets/images/job2.png";
-import job3 from "../../assets/images/job3.png";
-import job4 from "../../assets/images/job4.png";
-import job5 from "../../assets/images/job5.png";
 
 export default function MyCourses({ navigation }) {
   const [activeBottomTab, setActiveBottomTab] = useState("bell");
+  const [courses, setCourses] = useState([]);
 
-  const courses = [
-    {
-      id: "1",
-      title: "UI UX Design",
-      author: "Humair",
-      progress: "100 Mins Done",
-      image: job1,
-      progressValue: 1,
-    },
-    {
-      id: "2",
-      title: "Wireframing",
-      author: "Humair",
-      progress: "100 Mins Done",
-      image: job2,
-      progressValue: 1,
-    },
-    {
-      id: "3",
-      title: "Wire–Framing Pro",
-      author: "Humair",
-      progress: "40 Mins Done",
-      image: job3,
-      progressValue: 0.4,
-    },
-    {
-      id: "4",
-      title: "User Flow",
-      author: "Humair",
-      progress: "100 Mins Done",
-      image: job4,
-      progressValue: 1,
-    },
-    {
-      id: "5",
-      title: "Web And App",
-      author: "Humair",
-      progress: "100 Mins Done",
-      image: job5,
-      progressValue: 1,
-    },
-  ];
+  useEffect(() => {
+    // Hàm lấy dữ liệu từ MockAPI
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("https://6459e17165bd868e930aa3ad.mockapi.io/courses");
+        const data = await response.json();
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   const renderCourseItem = ({ item }) => (
     <View style={styles.courseItem}>
-      <Image source={item.image} style={styles.courseImage} />
+      <Image source={{ uri: item.image }} style={styles.courseImage} />
       <View style={styles.courseInfo}>
         <Text style={styles.courseTitle}>{item.title}</Text>
         <Text style={styles.courseAuthor}>By {item.author}</Text>

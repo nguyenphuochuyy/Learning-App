@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen/Home';
+import HomeScreen from '../screens/Home/Home';
 import Started1 from "../screens/Started1/Started1";
 import Started2 from "../screens/Started2/Started2";
 import Started3 from "../screens/Started3/Started3";
@@ -24,7 +24,7 @@ const AppNavigator = () => {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Profile" screenOptions={{ title: false }}  >
+      <Stack.Navigator initialRouteName="MyCourses" screenOptions={{ title: false }}  >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Started1" component={Started1} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started2" component={Started2} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />

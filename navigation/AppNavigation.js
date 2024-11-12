@@ -24,7 +24,7 @@ const AppNavigator = () => {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MyCourses" screenOptions={{ title: false }}  >
+      <Stack.Navigator initialRouteName="Profile" screenOptions={{ title: false }}  >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Started1" component={Started1} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started2" component={Started2} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />

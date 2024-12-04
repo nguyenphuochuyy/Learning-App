@@ -7,16 +7,17 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function Detail1({ navigation }) {
+export default function Detail1({ navigation , route }) {
+  const { item } = route.params;
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Progress Bar */}
+      {/* Thanh Tiến Trình */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
           <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
-          <Text style={styles.stepText}>Overview</Text>
+          <Text style={styles.stepText}>Tổng Quan</Text>
         </View>
 
         <View
@@ -32,7 +33,7 @@ export default function Detail1({ navigation }) {
           <View style={styles.step}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
-          <Text style={styles.stepText}>Payment Method</Text>
+          <Text style={styles.stepText}>Thanh Toán</Text>
         </View>
 
         <View
@@ -48,62 +49,62 @@ export default function Detail1({ navigation }) {
           <View style={styles.step}>
             <Text style={styles.stepNumber}>3</Text>
           </View>
-          <Text style={styles.stepText}>Confirmation</Text>
+          <Text style={styles.stepText}>Xác Nhận</Text>
         </View>
       </View>
 
-      {/* Course Details */}
-      <Text style={styles.sectionTitle}>Overview</Text>
+      {/* Chi Tiết Khóa Học */}
+      <Text style={styles.sectionTitle}>Tổng Quan</Text>
       <Text style={styles.courseDetail}>
-        Name Of Lesson: <Text style={styles.boldText}>Mobile App UI UX</Text>
+        Tên Bài Học: <Text style={styles.boldText}>{item.name}</Text>
       </Text>
 
       <View style={styles.infoBox}>
         <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📚 100 + Lessons</Text>
-          <Text style={styles.infoText}>⏱ 7 Weeks</Text>
+          <Text style={styles.infoText}>📚 100 + Bài Học</Text>
+          <Text style={styles.infoText}>⏱ 7 Tuần</Text>
         </View>
         <View style={{ marginVertical: 10 }}>
-          <Text style={styles.infoText}>📄 Certificate</Text>
-          <Text style={styles.infoText}>💸 20% off</Text>
+          <Text style={styles.infoText}>📄 Chứng Chỉ</Text>
+          <Text style={styles.infoText}>💸 Giảm Giá 20%</Text>
         </View>
       </View>
 
-      <Text style={styles.courseDetail}>Course Rating: ⭐⭐⭐⭐⭐</Text>
+      <Text style={styles.courseDetail}>Đánh Giá Khóa Học : {'⭐'.repeat(item.rating)}</Text>
       <Text style={styles.courseDetail}>
-        Course Time: <Text style={styles.boldText}>7 Hrs</Text>
+        Thời Gian Khóa Học: <Text style={styles.boldText}>{item.hours} Giờ</Text>
       </Text>
       <Text style={styles.courseDetail}>
-        Name Of Trainer: <Text style={styles.boldText}>Ayesha</Text>
+        Tên Giảng Viên: <Text style={styles.boldText}>{item.author}</Text>
       </Text>
 
-      {/* Purchase Details */}
-      <Text style={styles.sectionTitle}>Purchase Detail:</Text>
+      {/* Chi Tiết Mua Hàng */}
+      <Text style={styles.sectionTitle}>Chi Tiết Mua Hàng:</Text>
       <View style={styles.purchaseBox}>
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-          <Text style={{ padding: 1 }}>Date: 13-4-24</Text>
-          <Text style={{ padding: 1 }}>Price Of Course: $95</Text>
+          <Text style={{ padding: 1 }}>Ngày: 13-4-24</Text>
+          <Text style={{ padding: 1 }}>Giá Khóa Học: {item.price}$</Text>
         </View>
         <View style={{ flexDirection: "row", marginLeft: 40, paddingTop: 10 }}>
-          <Text style={{ padding: 1 }}>Coupon: Added 20% Discount</Text>
+          <Text style={{ padding: 1 }}>Mã Giảm Giá: Giảm 20%</Text>
         </View>
       </View>
 
-      {/* Final Price */}
+      {/* Giá Cuối Cùng */}
       <View style={{ alignItems: "flex-end" }}>
         <Text style={styles.finalPrice}>
-          Final Price: <Text style={styles.price}> 66 $</Text>
+          Giá Cuối Cùng: <Text style={styles.price}>{item.price - (item.price *0.2)}$</Text>
         </Text>
       </View>
 
-      {/* Start Button */}
+      {/* Nút Bắt Đầu */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Detail2");
+          navigation.navigate("Detail2" , { item });
         }}
       >
-        <Text style={styles.buttonText}>STARTED</Text>
+        <Text style={styles.buttonText}>BẮT ĐẦU</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -111,6 +112,7 @@ export default function Detail1({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex : 1 ,
     padding: 16,
     backgroundColor: "#f8f8f8",
   },
@@ -135,7 +137,7 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     alignItems: "center",
-    width: 100, // Đảm bảo các bước có cùng chiều rộng
+    width: 100, 
   },
   activeStep: {
     backgroundColor: "#007AFF",

@@ -12,13 +12,13 @@ import avt_Detail4 from "../../assets/images/avt_detail4.png";
 export default function Detail4({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Progress Bar */}
+      {/* Thanh Tiến Trình */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
           <View style={[styles.step]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
-          <Text style={styles.stepText}>Overview</Text>
+          <Text style={styles.stepText}>Tổng Quan</Text>
         </View>
 
         <View
@@ -34,7 +34,7 @@ export default function Detail4({ navigation }) {
           <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
-          <Text style={styles.stepText}>Payment Method</Text>
+          <Text style={styles.stepText}>Phương Thức Thanh Toán</Text>
         </View>
 
         <View
@@ -50,28 +50,29 @@ export default function Detail4({ navigation }) {
           <View style={styles.step}>
             <Text style={styles.stepNumber}>3</Text>
           </View>
-          <Text style={styles.stepText}>Confirmation</Text>
+          <Text style={styles.stepText}>Xác Nhận</Text>
         </View>
       </View>
 
-     {/* Transaction Completed Icon */}
-     <View style={styles.checkmarkContainer}>
+      {/* Biểu Tượng Hoàn Thành Giao Dịch */}
+      <View style={styles.checkmarkContainer}>
         <Text style={styles.checkmark}>✔</Text>
       </View>
 
-      {/* Transaction Completed Text */}
-      <Text style={styles.completionText}>Transaction Completed</Text>
-       {/* Illustration */}
-       <View style={styles.imageContainer}>
+      {/* Văn Bản Hoàn Thành Giao Dịch */}
+      <Text style={styles.completionText}>Giao Dịch Đã Hoàn Thành</Text>
+      
+      {/* Hình Minh Họa */}
+      <View style={styles.imageContainer}>
         <Image
           source={avt_Detail4}
           style={styles.image}
         />
       </View>
 
-      {/* Start Button */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>STARTED TO LESSION</Text>
+      {/* Nút Bắt Đầu */}
+      <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('Profile')}}>
+        <Text style={styles.buttonText}>BẮT ĐẦU HỌC</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     alignItems: "center",
-    width: 100, // Đảm bảo các bước có cùng chiều rộng
+    width: 100, 
   },
   activeStep: {
     backgroundColor: "#007AFF",

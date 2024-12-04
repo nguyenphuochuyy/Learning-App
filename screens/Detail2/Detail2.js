@@ -7,16 +7,17 @@ import {
   ScrollView,
 } from "react-native";
 
-export default function Detail2({ navigation }) {
+export default function Detail2({ navigation  , route}) {
+  const { item } = route.params;
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Progress Bar */}
+      {/* Thanh Tiến Trình */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
           <View style={[styles.step]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
-          <Text style={styles.stepText}>Overview</Text>
+          <Text style={styles.stepText}>Tổng Quan</Text>
         </View>
 
         <View
@@ -32,7 +33,7 @@ export default function Detail2({ navigation }) {
           <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
-          <Text style={styles.stepText}>Payment Method</Text>
+          <Text style={styles.stepText}>Phương Thức Thanh Toán</Text>
         </View>
 
         <View
@@ -48,31 +49,28 @@ export default function Detail2({ navigation }) {
           <View style={styles.step}>
             <Text style={styles.stepNumber}>3</Text>
           </View>
-          <Text style={styles.stepText}>Confirmation</Text>
+          <Text style={styles.stepText}>Xác Nhận</Text>
         </View>
       </View>
 
-      {/* Select Payment Method */}
-      <Text style={styles.sectionTitle}>Select Payment Method</Text>
+      {/* Chọn Phương Thức Thanh Toán */}
+      <Text style={styles.sectionTitle}>Chọn Phương Thức Thanh Toán</Text>
 
-      <TouchableOpacity style={styles.paymentOption}>
-        <Text style={styles.optionText}>+ Paypal</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={[styles.paymentOption, styles.selectedOption]}>
-        <Text style={styles.optionText}>+ Add Credit Card</Text>
+        <Text style={styles.optionText}>+ Chuyển Khoản Momo</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.paymentOption}>
-        <Text style={styles.optionText}>+ Google Pay</Text>
+      <TouchableOpacity style={[styles.paymentOption]}>
+        <Text style={styles.optionText}>+ Chuyển Khoản Ngân Hàng</Text>
       </TouchableOpacity>
 
-      {/* Start Button */}
+      {/* Nút Bắt Đầu */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Detail3");
+          navigation.navigate("Detail3" , {item});
         }}
       >
-        <Text style={styles.buttonText}>STARTED</Text>
+        <Text style={styles.buttonText}>BẮT ĐẦU</Text>
       </TouchableOpacity>
     </ScrollView>
   );

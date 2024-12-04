@@ -17,21 +17,28 @@ export default function MyCourses({ navigation }) {
     // Hàm lấy dữ liệu từ MockAPI
     const fetchCourses = async () => {
       try {
-        const response = await fetch("https://6459e17165bd868e930aa3ad.mockapi.io/courses");
+        const response = await fetch("https://670fa54fa85f4164ef2b50e6.mockapi.io/course");
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
         const data = await response.json();
         setCourses(data);
       } catch (error) {
-        console.error("Error fetching courses:", error);
+        console.error(error);
       }
     };
     fetchCourses();
   }, []);
-
+  const myCourseSlice = courses.slice(0, 4);
+  myCourseSlice.map((course) => {
+    course.progressValue = Math.random();
+    course.progress = `${Math.round(course.progressValue * 100)}%`;
+  });
   const renderCourseItem = ({ item }) => (
     <View style={styles.courseItem}>
       <Image source={{ uri: item.image }} style={styles.courseImage} />
       <View style={styles.courseInfo}>
-        <Text style={styles.courseTitle}>{item.title}</Text>
+        <Text style={styles.courseTitle}>{item.name}</Text>
         <Text style={styles.courseAuthor}>By{item.author}</Text>
         <View style={styles.progressContainer}>
           <View style={[styles.progressBar, { width: `${item.progressValue * 100}%` }]} />
@@ -48,12 +55,12 @@ export default function MyCourses({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           {/* <Text style={styles.backText}>←</Text> */}
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>My Courses</Text>
+        <Text style={styles.headerTitle}>Các khóa học của tôi</Text>
       </View>
 
       {/* Courses List */}
       <FlatList
-        data={courses}
+        data={myCourseSlice}
         keyExtractor={(item) => item.id}
         renderItem={renderCourseItem}
         contentContainerStyle={styles.courseList}

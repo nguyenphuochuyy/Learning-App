@@ -23,15 +23,15 @@ const AllCourses = ({ route , navigation }) => {
         <View style={styles.card}>
             <Image source={{ uri: item.image }} style={styles.cardImage} />
             <View style={styles.cardContent}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                <Text style={styles.cardSubtitle}>By {item.author}</Text>
+                <Text style={styles.cardTitle}>{item.name}</Text>
+                <Text style={styles.cardSubtitle}>{item.author}</Text>
                 <Text style={styles.cardDescription}>{item.description}</Text>
                 <Text style={styles.cardInfo}>
-                    {item.lessons} lessons • {item.duration} hours
+                    {item.lessons} Thời gian học • {item.hours} giờ
                 </Text>
                 <Text style={styles.cardPrice}>${item.price}</Text>
                 <View>
-                    <TouchableOpacity style={styles.enrollButton}>
+                    <TouchableOpacity style={styles.enrollButton} onPress={()=>{navigation.navigate('Detail1' , {item})}}>
                         <Text style={styles.enrollText}>Đăng Kí Ngay</Text>
                     </TouchableOpacity>
                 </View>

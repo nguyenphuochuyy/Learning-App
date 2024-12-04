@@ -53,9 +53,12 @@ const Home = ({navigation , params}) => {
   const renderTrendingNowItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={{ uri: item.image}} style={styles.cardImage} />
-      <Text style={styles.cardTitle}>{item.title}</Text>
+      {/* <Text style={styles.cardTitle}>{item.title}</Text> */}
+      <View style={{justifyContent : 'center' , alignItems : 'center' , marginTop : 15}}>
       <Text style={styles.cardTitle}>{item.name}</Text>
-      <Text style={styles.cardSubtitle}>By {item.author}</Text>
+      <Text style={styles.cardSubtitle}>By{item.author}</Text>
+      </View>
+    
       <Text style={styles.cardRating}>{'⭐'.repeat(item.rating)}</Text>
     </View>
   );
@@ -75,9 +78,9 @@ const Home = ({navigation , params}) => {
       </View>
       
       <View style={styles.tagsContainer}>
-        <TouchableOpacity style={styles.tag}><Text>UI/UX</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tag}><Text>Website Design</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tag}><Text>Figma</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tag}><Text>NODEJS</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tag}><Text>REACTJS</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tag}><Text>JAVA</Text></TouchableOpacity>
       </View>
 
       <View style={styles.section}>
@@ -128,7 +131,7 @@ const Home = ({navigation , params}) => {
         }}>
           <FontAwesome name="file-text" size={24} color={activeBottomTab === "file-text" ? "gray" : "white"} />
         </TouchableOpacity>
-        
+
         <TouchableOpacity onPress={() => {
           setActiveBottomTab("bell");
           navigation.navigate("MyCourses");
@@ -196,7 +199,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 10,
+    // marginVertical: 10,
   },
   sectionTitle: {
     fontSize: 18,
@@ -220,13 +223,14 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: '100%',
-    height: 100,
+    height: 80,
     borderRadius: 10,
   },
   cardTitle: {
+    textAlign : 'center',
     fontWeight: 'bold',
     fontSize: 12,
-    marginTop: 10,
+
   },
   cardSubtitle: {
     color: '#666',
@@ -237,8 +241,10 @@ const styles = StyleSheet.create({
     color: '#3366FF',
   },
   cardRating: {
-    marginTop: 5,
-    fontSize: 16,
+    position: 'absolute',
+    right: 10,
+    bottom: 10,
+    fontSize: 14,
     color: '#FFD700',
   },
   bottomNav: {

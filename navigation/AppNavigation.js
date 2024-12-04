@@ -22,12 +22,11 @@ import AllCourses from '../screens/AllCourse';
 import Started0 from '../screens/Started0/Started0';
 import SignUp from "../screens/SignUp/SignUp"
 const Stack = createStackNavigator();
-
 const AppNavigator = () => {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ title: false  , headerShown : false}}  >
+      <Stack.Navigator initialRouteName="Started0" screenOptions={{ title: false  , headerShown : false}}  >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Started0" component={Started0} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started1" component={Started1} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
@@ -47,9 +46,6 @@ const AppNavigator = () => {
         <Stack.Screen name="Inbox" component={Inbox} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="MyCourses" component={MyCourses} options={{ headerTransparent : true , headerTitle : ''}}/>
         <Stack.Screen name="AllCourses" component={AllCourses} />
-        
-
-
       </Stack.Navigator>
     </NavigationContainer>
 

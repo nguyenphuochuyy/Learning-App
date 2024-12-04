@@ -49,13 +49,13 @@ export default function Inbox({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           {/* <Text style={styles.backText}>←</Text> */}
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Inbox</Text>
+        <Text style={styles.headerTitle}>Tin nhắn</Text>
       </View>
 
       {/* Search Box */}
       <View style={styles.searchContainer}>
         <FontAwesome name="search" size={18} color="#666" />
-        <TextInput style={styles.searchInput} placeholder="Search Here" placeholderTextColor="#666" />
+        <TextInput style={styles.searchInput} placeholder="Tìm kiếm" placeholderTextColor="#666" />
       </View>
 
       {/* Tabs */}

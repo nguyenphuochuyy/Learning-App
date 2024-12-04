@@ -11,98 +11,107 @@ import {
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useFocusEffect } from '@react-navigation/native';
 import ellipse12 from "../../assets/images/Ellipse12.png";
-import Reactangle12 from "../../assets/images/Rectangle12.png";
-import Reactangle13 from "../../assets/images/Rectangle13.png";
+
 
 export default function Profile({ navigation }) {
-  const [showAllCourses, setShowAllCourses] = useState(false);
+
   const [activeBottomTab, setActiveBottomTab] = useState("Profile");
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const [courses, setCourses] = useState([]);
+   // hàm fetch list coureses từ api
+   const fetchCourses = async () => {
+    try {
+      const response = await fetch("https://670fa54fa85f4164ef2b50e6.mockapi.io/course");
+      if (!response.ok) {
+        throw new Error('Something went wrong');
+      }
+      const data = await response.json();
+      setCourses(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useFocusEffect(
     useCallback(() => {
       // Đặt active tab về "Profile" mỗi khi màn hình này được focus
       setActiveBottomTab("Profile");
+      fetchCourses();
     }, [])
   );
 
   // Dữ liệu khóa học mẫu
-  const courses = [
-    { id: '1', image: Reactangle12, title: "Khóa học 1" },
-    { id: '2', image: Reactangle13, title: "Khóa học 2" },
-    { id: '3', image: Reactangle12, title: "Khóa học 3" },
-    { id: '4', image: Reactangle13, title: "Khóa học 4" },
-    { id: '5', image: Reactangle12, title: "Khóa học 5" },
-    { id: '6', image: Reactangle13, title: "Khóa học 6" },
-  ];
+  const SliceCourse = courses.slice(0, 4);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backText}>←</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Hồ sơ</Text>
-      </View>
-
-      {/* Hình ảnh và thông tin cá nhân */}
-      <View style={styles.profileContainer}>
-        <Image source={ellipse12} style={styles.profileImage} />
-        <Text style={styles.profileName}>Xiao Chao Meng</Text>
-        <Text style={styles.profileTagline}>007</Text>
-        <TouchableOpacity style={styles.editIcon}>
-          <MaterialIcons name="edit" size={20} color="#000" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Giới thiệu về tôi */}
-      <View style={styles.aboutContainer}>
-        <Text style={styles.aboutTitle}>Giới thiệu về tôi</Text>
-        <Text style={styles.aboutText}>
-          Tôi là một người đam mê thiết kế và phát triển sản phẩm. Tôi luôn tìm kiếm những cơ hội để sáng tạo và cải thiện trải nghiệm người dùng.
-          Với kinh nghiệm trong việc tạo ra các giải pháp thiết kế đột phá, tôi mong muốn đóng góp vào sự phát triển của ngành công nghệ.
-        </Text>
-      </View>
-
-      {/* Kỹ năng */}
-      <View style={styles.skillsContainer}>
-        <Text style={styles.skillsTitle}>Kỹ năng của tôi</Text>
-        <View style={styles.skillsList}>
-          {["UI/UX", "Thiết kế website", "Figma", "Hoạt hình", "User Persona", "XD"].map((skill, index) => (
-            <View key={index} style={styles.skillItem}>
-              <Text style={styles.skillText}>{skill}</Text>
-            </View>
-          ))}
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Text style={styles.backText}>←</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Hồ sơ</Text>
         </View>
-      </View>
 
-      {/* Các khóa học đã đăng ký */}
-      <View style={styles.coursesHeader}>
-        <Text style={styles.coursesTitle}>Khóa học đã tham gia</Text>
-        <TouchableOpacity onPress={() => setShowAllCourses(!showAllCourses)}>
-          <Text style={styles.seeAllText}>{showAllCourses ? "Hiện ít hơn" : "Xem tất cả"}</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Hiển thị khóa học */}
-      {showAllCourses ? (
-        <FlatList
-          data={courses}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.courseItemVertical}>
-              <Image source={item.image} style={styles.courseImageVertical} />
-              <Text style={styles.courseTitle}>{item.title}</Text>
-            </View>
-          )}
-          showsVerticalScrollIndicator={false}
-        />
-      ) : (
-        <View style={styles.coursesContainer}>
-          <Image source={Reactangle12} style={styles.courseImage} />
-          <Image source={Reactangle13} style={styles.courseImage} />
+        {/* Hình ảnh và thông tin cá nhân */}
+        <View style={styles.profileContainer}>
+          <Image source={ellipse12} style={styles.profileImage} />
+          <Text style={styles.profileName}>Huy</Text>
+          <TouchableOpacity style={styles.editIcon}>
+            <MaterialIcons name="edit" size={20} color="#000" />
+          </TouchableOpacity>
         </View>
-      )}
+
+        {/* Giới thiệu về tôi */}
+        <View style={styles.aboutContainer}>
+          <Text style={styles.aboutTitle}>Giới thiệu về tôi</Text>
+          <Text style={styles.aboutText}>
+            Tôi là một người đam mê thiết kế và phát triển sản phẩm. Tôi luôn tìm kiếm những cơ hội để sáng tạo và cải thiện trải nghiệm người dùng.
+            Với kinh nghiệm trong việc tạo ra các giải pháp thiết kế đột phá, tôi mong muốn đóng góp vào sự phát triển của ngành công nghệ.
+          </Text>
+        </View>
+
+        {/* Kỹ năng */}
+        <View style={styles.skillsContainer}>
+          <Text style={styles.skillsTitle}>Kỹ năng của tôi</Text>
+          <View style={styles.skillsList}>
+            {["JavaScript", "Thiết kế website", "Figma", "Java", "DSA", "C++"].map((skill, index) => (
+              <View key={index} style={styles.skillItem}>
+                <Text style={styles.skillText}>{skill}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Các khóa học đã đăng ký */}
+        <View style={styles.coursesHeader}>
+          <Text style={styles.coursesTitle}>Khóa học đã tham gia</Text>
+          <TouchableOpacity onPress={() => setShowAllCourses(!showAllCourses)}>
+            <Text style={styles.seeAllText}>{showAllCourses ? "Hiện ít hơn" : "Xem tất cả"}</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Hiển thị khóa học */}
+        {showAllCourses ? (
+          <FlatList
+            data={SliceCourse}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={styles.courseItemVertical}>
+                <Image source={{ uri: item.image}} style={styles.courseImageVertical} />
+                <Text style={styles.courseTitle}>{item.name}</Text>
+              </View>
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+        ) : (
+          <View style={styles.coursesContainer}>
+            <Image source={{uri : courses[0].image}} style={styles.courseImage} />
+             <Image source={ {uri : courses[1].image}} style={styles.courseImage} />
+          </View>
+        )}
+      </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
@@ -131,14 +140,17 @@ export default function Profile({ navigation }) {
           <FontAwesome name="user" size={24} color={activeBottomTab === "Profile" ? "gray" : "white"} />
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    flex: 1,
     backgroundColor: "#f8f8f8",
+  },
+  scrollContent: {
+    paddingBottom: 80, // Đảm bảo có không gian cho Bottom Navigation
   },
   header: {
     flexDirection: "row",
@@ -264,7 +276,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF",
     borderRadius: 20,
     position: "absolute",
-    bottom: 20,
+    bottom: 0,
     left: 16,
     right: 16,
   },

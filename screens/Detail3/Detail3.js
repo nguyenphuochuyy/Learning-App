@@ -8,16 +8,17 @@ import {
   TextInput,
 } from "react-native";
 
-export default function Detail3({ navigation }) {
+export default function Detail3({ navigation, route }) {
+  const { item } = route.params;
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Progress Bar */}
+      {/* Thanh Tiến Trình */}
       <View style={styles.progressContainer}>
         <View style={styles.stepContainer}>
           <View style={[styles.step]}>
             <Text style={styles.stepNumber}>1</Text>
           </View>
-          <Text style={styles.stepText}>Overview</Text>
+          <Text style={styles.stepText}>Tổng Quan</Text>
         </View>
 
         <View
@@ -33,7 +34,7 @@ export default function Detail3({ navigation }) {
           <View style={[styles.step, styles.activeStep]}>
             <Text style={styles.stepNumber}>2</Text>
           </View>
-          <Text style={styles.stepText}>Payment Method</Text>
+          <Text style={styles.stepText}>Phương Thức Thanh Toán</Text>
         </View>
 
         <View
@@ -49,53 +50,43 @@ export default function Detail3({ navigation }) {
           <View style={styles.step}>
             <Text style={styles.stepNumber}>3</Text>
           </View>
-          <Text style={styles.stepText}>Confirmation</Text>
+          <Text style={styles.stepText}>Xác Nhận</Text>
         </View>
       </View>
 
-      {/* Add Details Section */}
-      <Text style={styles.sectionTitle}>Add Details</Text>
+      {/* Thêm Thông Tin */}
+      <Text style={styles.sectionTitle}>Thông Tin Chuyển Khoản MoMo</Text>
 
-      <TextInput style={styles.input} placeholder="Card Number" />
-      <View style={styles.row}>
-        <TextInput
-          style={[styles.input, styles.halfInput]}
-          placeholder="CVV Number"
-        />
-        <TextInput
-          style={[styles.input, styles.halfInput]}
-          placeholder="Expire Date"
-        />
-      </View>
-      <TextInput style={styles.input} placeholder="Password" />
+      <TextInput style={styles.input} placeholder="Số Điện Thoại MoMo" keyboardType="phone-pad" />
+      <TextInput style={styles.input} placeholder="Mã Thanh Toán MoMo" />
 
-      {/* Purchase Details */}
-      <Text style={styles.sectionTitle}>Purchase Detail:</Text>
+      {/* Thông Tin Mua Hàng */}
+      <Text style={styles.sectionTitle}>Thông Tin Mua Hàng:</Text>
       <View style={styles.purchaseBox}>
-        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-          <Text style={{ padding: 1 }}>Date: 13-4-24</Text>
-          <Text style={{ padding: 1 }}>Price Of Course: $95</Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text style={{ padding: 1 }}>Ngày: 13-4-24</Text>
+          <Text style={{ padding: 1 }}>Giá Khóa Học: {item.price}$</Text>
         </View>
-        <View style={{ flexDirection: "row", marginLeft: 40, paddingTop: 10 }}>
-          <Text style={{ padding: 1 }}>Coupon: Added 20% Discount</Text>
+        <View style={{ flexDirection: "row", paddingTop: 10, justifyContent: "center" }}>
+          <Text style={{ padding: 1 }}>Ưu Đãi: Giảm 20%</Text>
         </View>
       </View>
 
-      {/* Final Price */}
+      {/* Giá Cuối Cùng */}
       <View style={{ alignItems: "flex-end" }}>
         <Text style={styles.finalPrice}>
-          Final Price: <Text style={styles.price}> 66 $</Text>
+          Giá Cuối Cùng: <Text style={styles.price}> {item.price - item.price * 0.2}$</Text>
         </Text>
       </View>
 
-      {/* Start Button */}
+      {/* Nút Bắt Đầu */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
           navigation.navigate("Detail4");
         }}
       >
-        <Text style={styles.buttonText}>STARTED</Text>
+        <Text style={styles.buttonText}>XÁC NHẬN CHUYỂN KHOẢN</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -193,3 +184,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+

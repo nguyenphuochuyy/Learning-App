@@ -6,7 +6,7 @@ const Started3 = ({navigation}) => {
             <View style={styles.container}>
                 <View style={{ alignItems: 'flex-end' }}>
                     <TouchableOpacity style={styles.skip}>
-                        <Text >SKIP</Text>
+                        <Text>BỎ QUA</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -15,59 +15,52 @@ const Started3 = ({navigation}) => {
                 </View>
 
                 <View style={{ marginTop: 25, alignItems: 'center' }}>
-                    <View >
-                        <Text style={{ fontSize: 25, fontWeight: '500' , textAlign : 'center' }}>Discover You </Text>
-                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>  learning Path</Text>
+                    <View>
+                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>Khám phá</Text>
+                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>Lộ trình học tập của bạn</Text>
                     </View>
                     <View style={{ marginTop: 10 }}>
                         <Text style={{ textAlign: 'center' }}>
-                            Lorem ipsum dolor sit amet a aconsectetur. Ut proin accumsan be
+                            Cùng Edu Hub xây dựng lộ trình học tập hoàn hảo để phát triển bản thân.
                         </Text>
                     </View>
                 </View>
-                <View style={{flexDirection : 'row' , marginTop : 20 , justifyContent : 'center'}}>
+                <View style={{flexDirection: 'row', marginTop: 20, justifyContent: 'center'}}>
                     <View style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 5,
-                            marginHorizontal: 5,
-                            backgroundColor: '#ccc',
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        marginHorizontal: 5,
+                        backgroundColor: '#ccc',
                     }}></View>
-                      <View style={{
-                        
-                            width: 10,
-                            height: 10,
-                            borderRadius: 5,
-                            marginHorizontal: 5,
-                            backgroundColor: '#ccc',
+                    <View style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        marginHorizontal: 5,
+                        backgroundColor: '#ccc',
                     }}></View>
-                      <View style={{
-                        
-                            width: 10,
-                            height: 10,
-                            borderRadius: 5,
-                            marginHorizontal: 5,
-                            backgroundColor: '#0F3975',
-                        
+                    <View style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        marginHorizontal: 5,
+                        backgroundColor: '#0F3975',
                     }}></View>
-                      <View style={{
-                      
-                            width: 10,
-                            height: 10,
-                            borderRadius: 5,
-                            marginHorizontal: 5,
-                            backgroundColor: '#ccc',
-                      
+                    <View style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        marginHorizontal: 5,
+                        backgroundColor: '#ccc',
                     }}></View>
-                    
                 </View>
 
                 <View style={{ marginTop: 40, alignItems: 'center' }}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('Started4')}} style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
-                        <Text style={{ textAlign: 'center', color: '#fff' }}>CONTINUE</Text>
+                    <TouchableOpacity onPress={() => {navigation.navigate('Started4')}} style={{ width: 200, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                        <Text style={{ textAlign: 'center', color: '#fff' }}>TIẾP TỤC</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         </>
     )
@@ -85,7 +78,6 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 20,
         backgroundColor: '#F1F1F1',
-
     }
 })
-export default Started3
+export default Started3;

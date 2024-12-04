@@ -1,0 +1,128 @@
+{
+    "users":
+    [
+      {
+        "id": 1,
+        "email": "user@gmail.com",
+        "password": "12345678"
+      },
+      {
+        "id": 2,
+        "email": "admin@gmail.com",
+        "password": "admin123"
+      }
+    ]
+    ,
+    "courses":
+    [
+      {
+        "id": 1,
+        "name": "Course 1",
+        "description": "Description 1",
+        "author": "Author 1",
+        "price": 100,
+        "image" : "https://huyyyy.sirv.com/e-learning/Rectangle12.png"
+      },
+      {
+        "id": 2,
+        "name": "Course 2",
+        "description": "Description 2",
+        "author": "Author 2",
+        "price": 200,
+        "image" : "https://huyyyy.sirv.com/e-learning/Rectangle13.png"
+      },
+      {
+        "id": 3,
+        "name": "Course 3",
+        "description": "Description 3",
+        "author": "Author 3",
+        "price": 300,
+        "image" : "https://huyyyy.sirv.com/e-learning/watching1.png"
+      }
+    ,
+    {
+      "id": 4,
+      "name": "Course 4",
+      "description": "Description 4",
+      "author": "Author 4",
+      "price": 400,
+      "image": "https://huyyyy.sirv.com/e-learning/watching2.png"
+    },
+    {
+      "id": 5,
+      "name": "Course 5",
+      "description": "Description 5",
+      "author": "Author 5",
+      "price": 500,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 6,
+      "name": "Course 6",
+      "description": "Description 6",
+      "author": "Author 6",
+      "price": 600,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 7,
+      "name": "Course 7",
+      "description": "Description 7",
+      "author": "Author 7",
+      "price": 700,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 8,
+      "name": "Course 8",
+      "description": "Description 8",
+      "author": "Author 8",
+      "price": 800,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 9,
+      "name": "Course 9",
+      "description": "Description 9",
+      "author": "Author 9",
+      "price": 900,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 10,
+      "name": "Course 10",
+      "description": "Description 10",
+      "author": "Author 10",
+      "price": 1000,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 11,
+      "name": "Course 11",
+      "description": "Description 11",
+      "author": "Author 11",
+      "price": 1100,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 12,
+      "name": "Course 12",
+      "description": "Description 12",
+      "author": "Author 12",
+      "price": 1200,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 13,
+      "name": "Course 13",
+      "description": "Description 13",
+      "author": "Author 13",
+      "price": 1300,
+      "image": "https://via.placeholder.com/150"
+    }
+    ]
+  
+
+
+}
+  

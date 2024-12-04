@@ -16,7 +16,7 @@ import Reactangle13 from "../../assets/images/Rectangle13.png";
 
 export default function Profile({ navigation }) {
   const [showAllCourses, setShowAllCourses] = useState(false);
-  const [activeBottomTab, setActiveBottomTab] = useState("Profile"); 
+  const [activeBottomTab, setActiveBottomTab] = useState("Profile");
 
   useFocusEffect(
     useCallback(() => {
@@ -25,14 +25,14 @@ export default function Profile({ navigation }) {
     }, [])
   );
 
-  // Sample course data
+  // Dữ liệu khóa học mẫu
   const courses = [
-    { id: '1', image: Reactangle12, title: "Course 1" },
-    { id: '2', image: Reactangle13, title: "Course 2" },
-    { id: '3', image: Reactangle12, title: "Course 3" },
-    { id: '4', image: Reactangle13, title: "Course 4" },
-    { id: '5', image: Reactangle12, title: "Course 5" },
-    { id: '6', image: Reactangle13, title: "Course 6" },
+    { id: '1', image: Reactangle12, title: "Khóa học 1" },
+    { id: '2', image: Reactangle13, title: "Khóa học 2" },
+    { id: '3', image: Reactangle12, title: "Khóa học 3" },
+    { id: '4', image: Reactangle13, title: "Khóa học 4" },
+    { id: '5', image: Reactangle12, title: "Khóa học 5" },
+    { id: '6', image: Reactangle13, title: "Khóa học 6" },
   ];
 
   return (
@@ -42,10 +42,10 @@ export default function Profile({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Text style={styles.backText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Profile</Text>
+        <Text style={styles.headerTitle}>Hồ sơ</Text>
       </View>
 
-      {/* Profile Picture and Info */}
+      {/* Hình ảnh và thông tin cá nhân */}
       <View style={styles.profileContainer}>
         <Image source={ellipse12} style={styles.profileImage} />
         <Text style={styles.profileName}>Xiao Chao Meng</Text>
@@ -55,20 +55,20 @@ export default function Profile({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* About Me */}
+      {/* Giới thiệu về tôi */}
       <View style={styles.aboutContainer}>
-        <Text style={styles.aboutTitle}>About Me</Text>
+        <Text style={styles.aboutTitle}>Giới thiệu về tôi</Text>
         <Text style={styles.aboutText}>
-          Lorem ipsum dolor sit amet consectetur. Lectus viverra sed aliquam quis enim leo.
-          Turpis nec facilisis placerat dolor ac donec.
+          Tôi là một người đam mê thiết kế và phát triển sản phẩm. Tôi luôn tìm kiếm những cơ hội để sáng tạo và cải thiện trải nghiệm người dùng.
+          Với kinh nghiệm trong việc tạo ra các giải pháp thiết kế đột phá, tôi mong muốn đóng góp vào sự phát triển của ngành công nghệ.
         </Text>
       </View>
 
-      {/* Skills */}
+      {/* Kỹ năng */}
       <View style={styles.skillsContainer}>
-        <Text style={styles.skillsTitle}>My Skills</Text>
+        <Text style={styles.skillsTitle}>Kỹ năng của tôi</Text>
         <View style={styles.skillsList}>
-          {["UI/UX", "Website Design", "Figma", "Animation", "User Persona", "XD"].map((skill, index) => (
+          {["UI/UX", "Thiết kế website", "Figma", "Hoạt hình", "User Persona", "XD"].map((skill, index) => (
             <View key={index} style={styles.skillItem}>
               <Text style={styles.skillText}>{skill}</Text>
             </View>
@@ -76,15 +76,15 @@ export default function Profile({ navigation }) {
         </View>
       </View>
 
-      {/* Enrolled Courses */}
+      {/* Các khóa học đã đăng ký */}
       <View style={styles.coursesHeader}>
-        <Text style={styles.coursesTitle}>Enrolled Courses</Text>
+        <Text style={styles.coursesTitle}>Khóa học đã tham gia</Text>
         <TouchableOpacity onPress={() => setShowAllCourses(!showAllCourses)}>
-          <Text style={styles.seeAllText}>{showAllCourses ? "Show Less" : "See All"}</Text>
+          <Text style={styles.seeAllText}>{showAllCourses ? "Hiện ít hơn" : "Xem tất cả"}</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Conditional Rendering of Courses */}
+      {/* Hiển thị khóa học */}
       {showAllCourses ? (
         <FlatList
           data={courses}
@@ -95,7 +95,7 @@ export default function Profile({ navigation }) {
               <Text style={styles.courseTitle}>{item.title}</Text>
             </View>
           )}
-          showsVerticalScrollIndicator={false} 
+          showsVerticalScrollIndicator={false}
         />
       ) : (
         <View style={styles.coursesContainer}>

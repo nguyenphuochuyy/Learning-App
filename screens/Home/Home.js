@@ -1,50 +1,77 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TextInput, FlatList, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import wc1 from "../../assets/images/watching1.png"
 import wc2 from "../../assets/images/watching2.png"
-const Home = ({navigation}) => {
+import ChatGPTBox from '../ChatBox';
+const Home = ({navigation , params}) => {
+  const user = params;
+  const [courses , setCourses] = useState([]);
+  // hàm fetch list coureses từ api
+  const fetchCourses = async () => {
+    try {
+      const response = await fetch("https://670fa54fa85f4164ef2b50e6.mockapi.io/course");
+      if (!response.ok) {
+        throw new Error('Something went wrong');
+      }
+      const data = await response.json();
+      setCourses(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  useEffect(() => {
+    fetchCourses();
+
+
+  } , []);
+  const courseSlice = courses.slice(0, 5);
   const [activeBottomTab, setActiveBottomTab] = useState("Home"); 
   const continueWatchingData = [
     { id: '1', title: 'Icon Design', creator: 'By Tom Hanksom', progress: '80% Done', imageUrl: require('../../assets/images/watching1.png')},
     { id: '2', title: 'Wireframes', creator: 'By Alex Watson', progress: '20% Done', imageUrl:require('../../assets/images/watching2.png') },
   ];
 
-  const trendingNowData = [
-    { id: '1', title: 'UI UX Design', creator: 'By Sarah Smith', rating: 5, imageUrl: require('../../assets/images/Rectangle13.png') },
-    { id: '2', title: 'App Design', creator: 'By Mike John', rating: 4, imageUrl: require('../../assets/images/Rectangle12.png') },
-  ];
+
 
   const renderContinueWatchingItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={item.imageUrl}  style={styles.cardImage} />
       <View>
       <Text style={styles.cardTitle}>{item.title}</Text>
+    
       <Text style={styles.cardSubtitle}>{item.creator}</Text>
       <Text style={styles.cardProgress}>{item.progress}</Text>
       </View>
+      
     </View>
+    
   );
 
   const renderTrendingNowItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.imageUrl} style={styles.cardImage} />
+      <Image source={{ uri: item.image}} style={styles.cardImage} />
       <Text style={styles.cardTitle}>{item.title}</Text>
-      <Text style={styles.cardSubtitle}>{item.creator}</Text>
+      <Text style={styles.cardTitle}>{item.name}</Text>
+      <Text style={styles.cardSubtitle}>By {item.author}</Text>
       <Text style={styles.cardRating}>{'⭐'.repeat(item.rating)}</Text>
     </View>
   );
-
   return (
+   
     <View style={styles.container}>
+     
       <View style={styles.header}>
-        <Text style={styles.welcomeText}>Welcome <Text style={styles.nameText}>Ayesha</Text></Text>
+    
+        <Text style={styles.welcomeText}>Xin chào <Text style={styles.nameText}>HUY</Text></Text>
         <FontAwesome name="cog" size={24} color="black" style={styles.settingsIcon} />
       </View>
       
       <View style={styles.searchContainer}>
         <FontAwesome name="search" size={20} color="gray" style={styles.searchIcon} />
-        <TextInput placeholder="Search Here" style={styles.searchInput} />
+        <TextInput placeholder="Tìm kiếm" style={styles.searchInput} />
       </View>
       
       <View style={styles.tagsContainer}>
@@ -54,9 +81,12 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Continue Watching</Text>
-        <TouchableOpacity><Text style={styles.viewAllText}>View All</Text></TouchableOpacity>
+        <Text style={styles.sectionTitle}>Tiếp tục xem</Text>
+        <TouchableOpacity><Text style={styles.viewAllText}  onPress={() => navigation.navigate('AllCourses', { courses })}>Xem thêm</Text></TouchableOpacity>
       </View>
+
+
+
       <FlatList
         data={continueWatchingData}
         renderItem={renderContinueWatchingItem}
@@ -66,18 +96,21 @@ const Home = ({navigation}) => {
         style={styles.list}
       />
 
+
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Trending Now</Text>
-        <TouchableOpacity><Text style={styles.viewAllText}>View All</Text></TouchableOpacity>
+        <Text style={styles.sectionTitle}>Khóa học hot</Text>
+        <TouchableOpacity><Text style={styles.viewAllText}  onPress={() => navigation.navigate('AllCourses', { courses })}>Xem thêm</Text></TouchableOpacity>
       </View>
       <FlatList
-        data={trendingNowData}
+        data={courseSlice}
         renderItem={renderTrendingNowItem}
         keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.list}
       />
+  
+
 
           {/* Bottom Navigation */}
           <View style={styles.bottomNav}>
@@ -87,12 +120,15 @@ const Home = ({navigation}) => {
         }}>
           <FontAwesome name="home" size={24} color={activeBottomTab === "home" ? "gray" : "white"} />
         </TouchableOpacity>
+
+
         <TouchableOpacity onPress={() => {
           setActiveBottomTab("file-text");
           navigation.navigate("Inbox");
         }}>
           <FontAwesome name="file-text" size={24} color={activeBottomTab === "file-text" ? "gray" : "white"} />
         </TouchableOpacity>
+        
         <TouchableOpacity onPress={() => {
           setActiveBottomTab("bell");
           navigation.navigate("MyCourses");
@@ -112,8 +148,9 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingBottom: 80, 
     flex: 1,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
   },
   header: {
@@ -169,19 +206,17 @@ const styles = StyleSheet.create({
     color: '#3366FF',
   },
   list: {
-    marginBottom: 20,
+    padding : 10,
   },
   card: {
-    width: 169,
-    marginRight: 15,
-    backgroundColor: '#fff',
+    width: 160,
+    marginRight: 10,
+    backgroundColor: '#f9f9f9',
     borderRadius: 10,
-    padding: 10,
+    height: 200,
     alignItems: 'center',
-    shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 10,
-    elevation: 5,
   },
   cardImage: {
     width: '100%',
@@ -213,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007AFF",
     borderRadius: 20,
     position: "absolute",
-    bottom: 20,
+    bottom: 5,
     left: 16,
     right: 16,
     zIndex : 999,

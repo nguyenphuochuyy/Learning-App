@@ -2,7 +2,8 @@ import { View , Text, StyleSheet, Image } from "react-native"
 import banner from "../../assets/images/logo_firstscreen.png";
 import { useEffect } from "react";
 import { useNavigation } from '@react-navigation/native';
-const Home = ()=>{
+import ChatGPTBox from "../ChatBox";
+const Started0 = ()=>{
     const navigation = useNavigation();
     useEffect(()=>{
         const timer = setTimeout(() => {
@@ -18,6 +19,7 @@ const Home = ()=>{
         <>
             <View style={styles.container}>
                 <Image source={banner} />
+              
             </View>
         </>
     )
@@ -30,4 +32,4 @@ const styles = StyleSheet.create({
         backgroundColor : '#fff' 
     }
 })
-export default Home
+export default Started0

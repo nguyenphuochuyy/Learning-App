@@ -6,7 +6,7 @@ const Started5 = ({navigation}) => {
             <View style={styles.container}>
                 {/* <View style={{ alignItems: 'flex-end' }}>
                     <TouchableOpacity style={styles.skip}>
-                        <Text >SKIP</Text>
+                        <Text >BỎ QUA</Text>
                     </TouchableOpacity>
                 </View> */}
 
@@ -16,23 +16,23 @@ const Started5 = ({navigation}) => {
 
                 <View style={{ marginTop: 25, alignItems: 'center' }}>
                     <View >
-                        <Text style={{ fontSize: 25, fontWeight: '500' , textAlign : 'center' }}>Join Edu Hub To</Text>
-                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>KickStart Your Lesson</Text>
+                        <Text style={{ fontSize: 25, fontWeight: '500' , textAlign : 'center' }}>Tham gia Edu Hub để</Text>
+                        <Text style={{ fontSize: 25, fontWeight: '500', textAlign: 'center' }}>Bắt đầu bài học của bạn</Text>
                     </View>
                     <View style={{ marginTop: 10 }}>
                         <Text style={{ textAlign: 'center' }}>
-                            Lorem ipsum dolor sit amet a aconsectetur. Ut proin accumsan be
+                            Tham gia Edu Hub ngay để trải nghiệm học tập tốt nhất.
                         </Text>
                     </View>
                 </View>
              
                 <View style={{ marginTop: 40, alignItems: 'center' , flexDirection : 'row' , justifyContent : 'space-around' }}>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('SignIn')}} style={{ width: 150, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
-                        <Text style={{ textAlign: 'center', color: '#fff' }}>SIGN IN</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Login')}} style={{ width: 150, height: 54, backgroundColor: '#0F3975', justifyContent: 'center', borderRadius: 10 }}>
+                        <Text style={{ textAlign: 'center', color: '#fff' }}>ĐĂNG NHẬP</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}} style={{ width: 150, height: 54, backgroundColor: '#FFF', borderColor : '#0F3975', borderWidth : 1, justifyContent: 'center', borderRadius: 10 }}>
-                        <Text style={{ textAlign: 'center', color: '#000' }}>SIGN UP</Text>
+                        <Text style={{ textAlign: 'center', color: '#000' }}>ĐĂNG KÝ</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -41,7 +41,6 @@ const Started5 = ({navigation}) => {
     )
 }
 const styles = StyleSheet.create({
-    
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 20,
         backgroundColor: '#F1F1F1',
-
     }
 })
-export default Started5
+export default Started5;

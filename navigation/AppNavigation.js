@@ -17,20 +17,26 @@ import Setting from '../screens/Setting/Setting';
 import Profile from '../screens/Profile/Profile';
 import Inbox from '../screens/Inbox/Inbox';
 import MyCourses from '../screens/MyCourses/MyCourses';
-import { SafeAreaView } from 'react-native';
+import Login from "../screens/SignIn/SignIn"
+import AllCourses from '../screens/AllCourse';
+import Started0 from '../screens/Started0/Started0';
+import SignUp from "../screens/SignUp/SignUp"
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MyCourses" screenOptions={{ title: false }}  >
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ title: false  , headerShown : false}}  >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Started0" component={Started0} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started1" component={Started1} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started2" component={Started2} options={{ headerLeft: () => { null } , headerTransparent : true , headerTitle : '' }} />
         <Stack.Screen name="Started3" component={Started3} options={{ headerLeft: () => { null } ,headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Started4" component={Started4} options={{ headerLeft: () => { null }, headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Started5" component={Started5} options={{ headerTransparent : true , headerTitle : '' }}/>
+        <Stack.Screen name="Login" component={Login} options={{ headerTransparent : true , headerTitle : '' }}/>
+        <Stack.Screen name="SignUp" component={SignUp} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Detail1" component={Detail1} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Detail2" component={Detail2} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Detail3" component={Detail3} options={{ headerTransparent : true , headerTitle : '' }}/>
@@ -39,7 +45,10 @@ const AppNavigator = () => {
         <Stack.Screen name="Setting" component={Setting} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Profile" component={Profile} options={{ headerTransparent : true , headerTitle : '' }}/>
         <Stack.Screen name="Inbox" component={Inbox} options={{ headerTransparent : true , headerTitle : '' }}/>
-        <Stack.Screen name="MyCourses" component={MyCourses} options={{ headerTransparent : true , headerTitle : '' }}/>
+        <Stack.Screen name="MyCourses" component={MyCourses} options={{ headerTransparent : true , headerTitle : ''}}/>
+        <Stack.Screen name="AllCourses" component={AllCourses} />
+        
+
 
       </Stack.Navigator>
     </NavigationContainer>

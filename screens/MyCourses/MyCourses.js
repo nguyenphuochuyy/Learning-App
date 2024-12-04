@@ -32,7 +32,7 @@ export default function MyCourses({ navigation }) {
       <Image source={{ uri: item.image }} style={styles.courseImage} />
       <View style={styles.courseInfo}>
         <Text style={styles.courseTitle}>{item.title}</Text>
-        <Text style={styles.courseAuthor}>By {item.author}</Text>
+        <Text style={styles.courseAuthor}>By{item.author}</Text>
         <View style={styles.progressContainer}>
           <View style={[styles.progressBar, { width: `${item.progressValue * 100}%` }]} />
         </View>
@@ -93,7 +93,7 @@ export default function MyCourses({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: "#fff",
   },
   header: {
     flexDirection: "row",
